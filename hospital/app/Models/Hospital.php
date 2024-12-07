@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\softDeletes;
+
+class Hospital extends Model
+{
+    use HasFactory;
+    use softDeletes;
+
+    protected $guarded = []; 
+
+    public function getVisits()
+    {
+         return $this->hasMany(Visit::class, 'patients_id','id');
+    }
+}
